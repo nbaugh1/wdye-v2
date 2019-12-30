@@ -2,7 +2,7 @@
   "name": "where-did-you-eat-v-2",
   "license": "MIT",
   "engines": {
-    "node": "10.15.3",
+    "node": "12.10.0",
     "yarn": "1.15.2"
   },
   "scripts": {
