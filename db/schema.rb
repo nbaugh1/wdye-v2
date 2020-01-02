@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_022255) do
+ActiveRecord::Schema.define(version: 2020_01_02_153833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,34 @@ ActiveRecord::Schema.define(version: 2019_12_30_022255) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "cuisine"
+    t.integer "yelp_id"
+    t.string "location"
+    t.integer "price_range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "google_token"
+    t.string "email"
+    t.string "google_refresh_token"
+    t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.datetime "visit_date"
+    t.integer "user_id"
+    t.integer "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
