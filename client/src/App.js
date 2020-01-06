@@ -1,7 +1,8 @@
-// src/App.js
-
 import React from "react";
 import NavBar from "./components/NavBar";
+import Profile from './components/Profile';
+import history from './utils/history';
+import { Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from "./react-auth0-spa";
 
 function App() {
@@ -13,10 +14,17 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <NavBar />
-      </header>
+      <Router history={history}>
+        <header>
+          <NavBar />
+        </header>
+        <Switch>
+          <Route path="/" exact />
+          <Route path="/profile" component={ Profile } />
+        </Switch>
+      </Router>
     </div>
+
   );
 }
 
