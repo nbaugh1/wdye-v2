@@ -10,5 +10,6 @@
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "proxy": "http://localhost:3001"
 }

@@ -18,9 +18,10 @@ function App() {
         <header>
           <NavBar />
         </header>
+
         <Switch>
           <Route path="/" exact />
-          <Route path="/profile" component={ Profile } />
+          <PrivateRoute path="/profile" component={Profile} />
         </Switch>
       </Router>
     </div>
