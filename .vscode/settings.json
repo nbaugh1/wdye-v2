@@ -1,6 +1,3 @@
 {
-    "git.ignoreLimitWarning": true,
-    "vscode_custom_css.imports": ["file://Users/Nick/Development/synthwave84.css"]
-
+    "git.ignoreLimitWarning": true
 }
-
