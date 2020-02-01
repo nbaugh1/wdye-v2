@@ -1,4 +1,11 @@
 import React from 'react';
 import Link from 'react-router-dom';
-im
+import SearchForm from './SearchForm'
 
+const Home = () => {
+    return (
+        <SearchForm />
+    )
+}
+
+export default Home

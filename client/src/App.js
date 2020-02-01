@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import Profile from './components/Profile';
 import history from './utils/history';
+import Home from './components/Home'
 import { Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from "./react-auth0-spa";
 import PrivateRoute from "./components/PrivateRoute"
@@ -21,7 +22,7 @@ function App() {
         </header>
 
         <Switch>
-          <Route path="/" exact />
+          <PrivateRoute path="/" component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
         </Switch>
       </Router>
