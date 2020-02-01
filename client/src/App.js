@@ -4,6 +4,7 @@ import Profile from './components/Profile';
 import history from './utils/history';
 import { Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from "./react-auth0-spa";
+import PrivateRoute from "./components/PrivateRoute"
 
 function App() {
   const { loading } = useAuth0();
