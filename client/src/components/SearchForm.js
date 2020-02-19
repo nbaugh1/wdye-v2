@@ -8,7 +8,8 @@ const SearchForm = () => {
                 <FormLabel>
                     Restaurant Name
                 </FormLabel>
-                <Form.Control type="text" placeholder="Restaurant Name" /> 
+                <Form.Control type="text" placeholder="Restaurant Name" />
+                
             </Form.Group>
         </Form>
     )

@@ -22,7 +22,7 @@ function App() {
         </header>
 
         <Switch>
-          <PrivateRoute path="/" component={Home} />
+          <PrivateRoute path="/" exact component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
         </Switch>
       </Router>
