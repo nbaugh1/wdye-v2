@@ -1,7 +1,15 @@
 import React from 'react'
 import { FormLabel, Form } from 'react-bootstrap'
 
+
+
 const SearchForm = () => {
+    const searchYelp = () => {
+
+    }
+    const handleSubmit = () => {
+        
+    }
     return (
         <Form>
             <Form.Group controlId="restaurantSearch">
