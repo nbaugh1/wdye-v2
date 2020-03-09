@@ -16,7 +16,7 @@ const SearchForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    axios
+    fetch
       .get('https://api.yelp.com/v3/businesses/{searchValue}')
       .then(response => {
         const restaurants = response.data
