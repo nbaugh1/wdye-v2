@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const SearchForm = props => {
   const [searchValue, setSearchValue] = useState('')
+  const [locationValue, setLocationValue] = useState('')
   const [restaurantResults, setRestaurantResults] = useState('')
   const yelpApiKey = "y7ByWI2XVyatQlf7sIi3pdhagWQxnjoZ__bq0SDUr7QnHSan26rp-vYtP7FNiRrr8tYoX8NiKY3nl_7DLCxqgp1T9uiNh8NW5ol6GIl19KIlZv68cvEUHz2yUH94XXYx"
 
@@ -15,6 +16,14 @@ const SearchForm = props => {
     setSearchValue('')
   }
 
+  const handleLocationInputChange = e => {
+    setLocationValue(e.target.value)
+  }
+
+  const resetLocationInput = () => {
+    setLocationValue('')
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     axios
@@ -23,7 +32,7 @@ const SearchForm = props => {
           Authorization: `Bearer ${yelpApiKey}`,
         },
         params: {
-          location: '11206',
+          location: `${locationValue}`,
           term: `${searchValue}`
         }
       })
@@ -36,6 +45,7 @@ const SearchForm = props => {
         console.log(err)
       })
     resetSearchInput()
+    resetLocationInput()
   }
 
   return (
@@ -47,6 +57,15 @@ const SearchForm = props => {
           placeholder='Restaurant Name'
           value={searchValue}
           onChange={handleSearchInputChange}
+        />
+        <hr />
+
+        <FormLabel>Location</FormLabel>
+        <Form.Control
+          type='text'
+          placeholder='Zip Code, City, State, etc'
+          value={locationValue}
+          onChange={handleLocationInputChange}
         />
       </Form.Group>
       <Button type='submit'>Search</Button>

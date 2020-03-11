@@ -6,6 +6,7 @@ import Home from './components/Home'
 import { Router, Switch } from "react-router-dom";
 import { useAuth0 } from "./react-auth0-spa";
 import PrivateRoute from "./components/PrivateRoute"
+import "bootswatch/dist/slate/bootstrap.min.css";
 
 function App() {
   const { loading } = useAuth0();

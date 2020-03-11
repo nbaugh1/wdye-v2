@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap'
 
 const NavBar = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -8,14 +9,14 @@ const NavBar = () => {
     return (
         <div>
             {!isAuthenticated && (
-                <button onClick={() => loginWithRedirect({})}>Log in</button>
+                <Button onClick={() => loginWithRedirect({})}>Log in</Button>
             )}
 
-            {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+            {isAuthenticated && <Button onClick={() => logout()}>Log out</Button>}
 
             {isAuthenticated && (
                 <span>
-                    <Link to="/">Home</Link>&nbsp;
+                    <Button><Link to="/">Home</Link>&nbsp;</Button>
                     <Link to="/profile">Profile</Link>
                 </span>
             )}
