@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FormLabel, Form, Button } from 'react-bootstrap'
 import axios from 'axios'
+import SearchResults from './SearchResults'
 
 const SearchForm = props => {
   const [searchValue, setSearchValue] = useState('')
@@ -37,9 +38,10 @@ const SearchForm = props => {
         }
       })
       .then((res) => {
-        const restaurants = res.data
+        const restaurants = (res.data['businesses'])
         setRestaurantResults({ restaurants })
-        console.log(restaurants)
+        console.log(restaurantResults)
+        debugger
       })
       .catch((err) => {
         console.log(err)
@@ -48,28 +50,33 @@ const SearchForm = props => {
     resetLocationInput()
   }
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId='restaurantSearch'>
-        <FormLabel>Restaurant Name</FormLabel>
-        <Form.Control
-          type='text'
-          placeholder='Restaurant Name'
-          value={searchValue}
-          onChange={handleSearchInputChange}
-        />
-        <hr />
 
-        <FormLabel>Location</FormLabel>
-        <Form.Control
-          type='text'
-          placeholder='Zip Code, City, State, etc'
-          value={locationValue}
-          onChange={handleLocationInputChange}
-        />
-      </Form.Group>
-      <Button type='submit'>Search</Button>
-    </Form>
+
+  return (
+    <div className="container">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId='restaurantSearch'>
+          <FormLabel>Restaurant Name</FormLabel>
+          <Form.Control
+            type='text'
+            placeholder='Restaurant Name'
+            value={searchValue}
+            onChange={handleSearchInputChange}
+          />
+          <hr />
+
+          <FormLabel>Location</FormLabel>
+          <Form.Control
+            type='text'
+            placeholder='Zip Code, City, State, etc'
+            value={locationValue}
+            onChange={handleLocationInputChange}
+          />
+        </Form.Group>
+        <Button type='submit'>Search</Button>
+      </Form>
+      <SearchResults results={restaurantResults} />
+    </div>
   )
 }
 
