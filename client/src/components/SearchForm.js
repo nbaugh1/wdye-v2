@@ -5,6 +5,7 @@ import axios from 'axios'
 const SearchForm = props => {
   const [searchValue, setSearchValue] = useState('')
   const [restaurantResults, setRestaurantResults] = useState('')
+  const yelpApiKey = process.env.REACT_APP_API_KEY
 
   const handleSearchInputChange = e => {
     setSearchValue(e.target.value)
@@ -16,12 +17,28 @@ const SearchForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    fetch
-      .get('https://api.yelp.com/v3/businesses/{searchValue}')
-      .then(response => {
-        const restaurants = response.data
+    axios
+      .get(`https://api.yelp.com/v3/businesses/search`, {
+        headers: {
+          Authorization: `Bearer ${yelpApiKey}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Origin: 'http://localhost:3000',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Origin': '*'
+        },
+        params: {
+          location: '11206',
+          term: `${searchValue}`
+        }
+      })
+      .then((res) => {
+        const restaurants = res.data
         this.setRestaurantResults({ restaurants })
         console.log(restaurants)
+      })
+      .catch((err) => {
+        console.log(err)
       })
     resetSearchInput()
   }
