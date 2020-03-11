@@ -5,7 +5,7 @@ import axios from 'axios'
 const SearchForm = props => {
   const [searchValue, setSearchValue] = useState('')
   const [restaurantResults, setRestaurantResults] = useState('')
-  const yelpApiKey = process.env.REACT_APP_API_KEY
+  const yelpApiKey = "y7ByWI2XVyatQlf7sIi3pdhagWQxnjoZ__bq0SDUr7QnHSan26rp-vYtP7FNiRrr8tYoX8NiKY3nl_7DLCxqgp1T9uiNh8NW5ol6GIl19KIlZv68cvEUHz2yUH94XXYx"
 
   const handleSearchInputChange = e => {
     setSearchValue(e.target.value)
@@ -18,14 +18,9 @@ const SearchForm = props => {
   const handleSubmit = e => {
     e.preventDefault()
     axios
-      .get(`https://api.yelp.com/v3/businesses/search`, {
+      .get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
         headers: {
           Authorization: `Bearer ${yelpApiKey}`,
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Origin: 'http://localhost:3000',
-          'Access-Control-Allow-Headers': '*',
-          'Access-Control-Allow-Origin': '*'
         },
         params: {
           location: '11206',
@@ -34,7 +29,7 @@ const SearchForm = props => {
       })
       .then((res) => {
         const restaurants = res.data
-        this.setRestaurantResults({ restaurants })
+        setRestaurantResults({ restaurants })
         console.log(restaurants)
       })
       .catch((err) => {
