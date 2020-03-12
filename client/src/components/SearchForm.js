@@ -38,10 +38,7 @@ const SearchForm = props => {
         }
       })
       .then((res) => {
-        const restaurants = (res.data['businesses'])
-        setRestaurantResults({ restaurants })
-        console.log(restaurantResults)
-        debugger
+        setRestaurantResults(res.data['businesses'])
       })
       .catch((err) => {
         console.log(err)
@@ -50,7 +47,17 @@ const SearchForm = props => {
     resetLocationInput()
   }
 
-
+  function searchResComps() {
+    if (restaurantResults) {
+      const resultComponents = restaurantResults.map(rest => (
+        <div>
+          <h1>{rest.name}</h1>
+        </div>
+      )
+      )
+      return resultComponents
+    }
+  }
 
   return (
     <div className="container">
@@ -75,7 +82,7 @@ const SearchForm = props => {
         </Form.Group>
         <Button type='submit'>Search</Button>
       </Form>
-      <SearchResults results={restaurantResults} />
+      {searchResComps()}
     </div>
   )
 }
