@@ -69,6 +69,9 @@ const SearchForm = props => {
             placeholder='Restaurant Name'
             value={searchValue}
             onChange={handleSearchInputChange}
+            style={{
+              width: '50%'
+            }}
           />
           <hr />
 
@@ -78,6 +81,9 @@ const SearchForm = props => {
             placeholder='Zip Code, City, State, etc'
             value={locationValue}
             onChange={handleLocationInputChange}
+            style={{
+              width: '50%',
+            }}
           />
         </Form.Group>
         <Button type='submit'>Search</Button>

@@ -16,8 +16,8 @@ const NavBar = () => {
 
             {isAuthenticated && (
                 <span>
-                    <Button><Link to="/">Home</Link>&nbsp;</Button>
-                    <Button><Link to="/profile">Profile</Link></Button>
+                    <Link to="/"><Button>Home</Button></Link>&nbsp;
+                    <Link to="/profile"><Button>Profile</Button></Link>
                 </span>
             )}
         </div>
