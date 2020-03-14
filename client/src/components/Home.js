@@ -6,8 +6,9 @@ const Home = () => {
     return (
         <Container
             style={{
-                margin: 10,
-                padding: 20,
+                'max-width': '500px',
+                'margin': 'auto',
+                'padding': '10px',
                 'border-style': 'solid'
 
             }}>
