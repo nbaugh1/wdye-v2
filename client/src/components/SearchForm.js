@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react'
 import { FormLabel, Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import SearchResults from './SearchResults'
 
-const SearchForm = props => {
+const SearchForm = () => {
   const [searchValue, setSearchValue] = useState('')
   const [locationValue, setLocationValue] = useState('')
   const [restaurantResults, setRestaurantResults] = useState('')
@@ -47,12 +47,11 @@ const SearchForm = props => {
     resetLocationInput()
   }
 
-  function searchResComps() {
+  const searchResComps = () => {
+
     if (restaurantResults) {
       const resultComponents = restaurantResults.map(rest => (
-        <div>
-          <h1>{rest.name}</h1>
-        </div>
+        <SearchResults restaurants={rest} />
       )
       )
       return resultComponents
@@ -61,33 +60,35 @@ const SearchForm = props => {
 
   return (
     <div className="container">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId='restaurantSearch'>
-          <FormLabel>Restaurant Name</FormLabel>
-          <Form.Control
-            type='text'
-            placeholder='Restaurant Name'
-            value={searchValue}
-            onChange={handleSearchInputChange}
-            style={{
+      <div className="form-group">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId='restaurantSearch'>
+            <FormLabel>Restaurant Name</FormLabel>
+            <Form.Control
+              type='text'
+              placeholder='Restaurant Name'
+              value={searchValue}
+              onChange={handleSearchInputChange}
+              style={{
 
-            }}
-          />
-          <hr />
+              }}
+            />
+            <hr />
 
-          <FormLabel>Location</FormLabel>
-          <Form.Control
-            type='text'
-            placeholder='Zip Code, City, State, etc'
-            value={locationValue}
-            onChange={handleLocationInputChange}
-            style={{
+            <FormLabel>Location</FormLabel>
+            <Form.Control
+              type='text'
+              placeholder='Zip Code, City, State, etc'
+              value={locationValue}
+              onChange={handleLocationInputChange}
+              style={{
 
-            }}
-          />
-        </Form.Group>
-        <Button type='submit'>Search</Button>
-      </Form>
+              }}
+            />
+          </Form.Group>
+          <Button type='submit'>Search</Button>
+        </Form>
+      </div>
       {searchResComps()}
     </div>
   )

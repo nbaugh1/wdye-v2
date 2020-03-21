@@ -9,7 +9,7 @@ const Home = () => {
                 'max-width': '500px',
                 'margin': 'auto',
                 'padding': '10px',
-                'border-style': 'solid'
+
 
             }}>
             <SearchForm />
