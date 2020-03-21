@@ -70,8 +70,7 @@ const SearchForm = props => {
             value={searchValue}
             onChange={handleSearchInputChange}
             style={{
-              'max-width': '500px',
-              'margin': 'auto'
+
             }}
           />
           <hr />
